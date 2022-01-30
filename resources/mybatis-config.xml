@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--        开启懒加载模式-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+<!--        <setting name="cacheEnabled" value="true"/>-->
+        <setting name="localCacheScope" value="STATEMENT"/>
+    </settings>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="name1" value="value1"/>
+        </plugin>
+    </plugins>
+    <!--    environments:可以配置多种环境
+        environment:配置一个具体的环境信息
+    environments中必须包含transactionManager和dataSource-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/survey1"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--通过xml映射文件注册-->
+        <mapper resource="mapper/UserMapper.xml"></mapper>
+        <mapper resource="mapper/AdminMapper.xml"></mapper>
+        <mapper resource="mapper/StudentMapper.xml"></mapper>
+        <mapper resource="mapper/EvaluateMapper.xml"></mapper>
+        <mapper resource="mapper/FirstTitleMapper.xml"></mapper>
+        <mapper resource="mapper/SecendTitleMapper.xml"></mapper>
+        <mapper resource="mapper/ThirdTitleMapper.xml"></mapper>
+    </mappers>
+</configuration>
