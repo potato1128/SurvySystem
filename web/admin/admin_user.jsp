@@ -49,7 +49,7 @@
             </form>
         </div>
     </div>
-    <div class="result-wrap">
+    <b class="result-wrap">
         <div class="result-title">
             <div class="result-list">
                 <a href="/Test01Project/backstage/admin_useradd.jsp">新增学生</a>
@@ -83,10 +83,11 @@
                             <td><a href="#">查看成绩</a>
                             <td>
                                 <div style="display: inline">
-                                    <div><a th:href="#" s style="float: left" class="btn btn-primary btn-xs " role="button">修改</a>
+                                    <div><a href="#" s style="float: left"  class="btn btn-primary btn-xs " role="button">修改</a>
                                     </div>
-                                    <div><a th:href="#" class="btn btn-danger btn-xs " role="button">删除</a></div>
+                                    <div  ><a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}"  id="del" class="btn btn-danger btn-xs " role="button">删除</a></div>
                                 </div>
+                        </td>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -109,8 +110,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
     <!--/main-->
 </div>
 <script type="text/javascript">
@@ -123,12 +122,16 @@
     var btn1 = document.querySelector("#btn1")
     var btn2 = document.querySelector("#btn2")
     var text2 = document.querySelector("#text2")
-
+    var del= document.querySelector("#del")
     //上一页
+    del.onclick=function (){
+        alert("123")
+    }
     previousPage.onclick = function () {
         if (Number(currentPage.innerHTML) > 1) {
             currentPage.innerHTML = Number(currentPage.innerHTML) - 1
             location.href = "/Survey/AdminServlet?action=ShowStudentPaging&pageNum=" + currentPage.innerHTML + "&pageSize=7&studentClass="+allClass.value
+
         } else {
             currentPage.innerHTML = "1"
         }

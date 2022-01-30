@@ -100,5 +100,20 @@ public class UserServiceImpl implements UserService {
        return studentMapper.selectAllClass();
     }
 
-
+    /**
+     * 删除学生根据id
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public int deleteStudent(Integer id) {
+       return studentMapper.delete(id);
+    }
+@Test
+    public  void ts(){
+    UserServiceImpl userService = new UserServiceImpl();
+    int i = userService.deleteStudent(1);
+    System.out.println(i);
+}
 }

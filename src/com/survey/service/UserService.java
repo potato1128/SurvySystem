@@ -56,4 +56,10 @@ public interface UserService {
      * @return
      */
     List<String>ListAllClass();
+
+    /**
+     * 删除学生根据id
+     * @return
+     */
+    int deleteStudent(Integer id);
 }

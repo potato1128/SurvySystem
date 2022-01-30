@@ -21,4 +21,7 @@
     <select id="selectAllClass" resultType="java.lang.String"  >
         SELECT student_class from student GROUP BY student_class
     </select>
+    <delete id="delete" >
+        delete from student where id=#{id}
+    </delete>
 </mapper>

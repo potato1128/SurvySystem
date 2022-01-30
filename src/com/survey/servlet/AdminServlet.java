@@ -37,7 +37,7 @@ public class AdminServlet extends BaseServlet{
             request.setAttribute("studentId",studentId);
         }
         if(studentClass!=null){
-            if(studentClass.equals("全部班级")){
+            if(studentClass.equals("全部班级")||studentClass==""){
                 studentClass=null;
             }else {
                 request.setAttribute("studentClass",studentClass);
@@ -57,7 +57,24 @@ public class AdminServlet extends BaseServlet{
         }
         PageInfo<Student> studentPageInfo = userService.ListStudentPaging(pageNum, pageSize,studentClass,studentId);
         request.setAttribute("studentPageInfo",studentPageInfo);
+      request.setAttribute("studentClass",studentClass);
        request.getRequestDispatcher("/admin/admin_user.jsp").forward(request,response);
+    }
+    //删除学生
+    public void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String pageNum0 = request.getParameter("pageNum");
+        String pageSize0 = request.getParameter("pageSize");
+        String studentClass = request.getParameter("studentClass");
+        String id = request.getParameter("id");
+        if(null!=id){
+            int i = TypeUtils.toInt(id);
+            userService.deleteStudent(i);
+            request.setAttribute("PageNum",pageNum0);
+            request.setAttribute("pageSize",pageSize0);
+            request.setAttribute("studentClass",studentClass);
+        }
+       request.getRequestDispatcher("/AdminServlet?action=ShowStudentPaging").forward(request,response);
+
     }
     //展示所有企业用户
     public void ShowUserPaging(HttpServletRequest request, HttpServletResponse response) throws Exception {
