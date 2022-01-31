@@ -48,13 +48,19 @@ public class AdminServlet extends BaseServlet{
         request.setAttribute("currentPage",pageNum0);
         int pageNum = 0;
         int pageSize=0;
-        if(pageNum0==null||pageSize0==null){
+
+        if(pageNum0==null&&pageSize0==null){
             pageNum=1;
             pageSize=7;
-        }else {
+        }else if((null!=pageNum0)&&(null==pageSize0)){
+            pageNum=TypeUtils.toInt(pageNum0);
+            pageSize=7;
+        } else {
             pageNum=TypeUtils.toInt(pageNum0);
             pageSize=TypeUtils.toInt(pageSize0);
         }
+
+
         PageInfo<Student> studentPageInfo = userService.ListStudentPaging(pageNum, pageSize,studentClass,studentId);
         request.setAttribute("studentPageInfo",studentPageInfo);
       request.setAttribute("studentClass",studentClass);
@@ -74,9 +80,28 @@ public class AdminServlet extends BaseServlet{
             request.setAttribute("studentClass",studentClass);
         }
        request.getRequestDispatcher("/AdminServlet?action=ShowStudentPaging").forward(request,response);
-
     }
-    //展示所有企业用户
+    //添加学生
+    public void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String pageNum = request.getParameter("pageNum");
+        String stuId = request.getParameter("stuId");
+        String stuName = request.getParameter("stuName");
+        String stuPwd = request.getParameter("stuPwd");
+        String stuClass = request.getParameter("stuClass");
+        String sex = request.getParameter("sex");
+        int i=0;
+        int num=1;
+        if(null!=sex){
+             i = TypeUtils.toInt(sex);
+        }
+        if(null!=pageNum&&pageNum!=""){
+            num = TypeUtils.toInt(pageNum);
+        }
+        Student student = new Student(stuId,stuName,stuPwd,stuClass,i);
+        userService.insertStudent(student);
+      response.sendRedirect("/Survey/AdminServlet?action=ShowStudentPaging&pageNum="+num);
+    }
+        //展示所有企业用户
     public void ShowUserPaging(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String pageNum0 = request.getParameter("pageNum");
         String pageSize0 = request.getParameter("pageSize");

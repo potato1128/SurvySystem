@@ -15,12 +15,12 @@
     <link href="../js/framework/bootstrap-3.4.1-dist/js/bootstrap.js" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 </head>
+<h1>${(requestScope.studentPageInfo.total/requestScope.studentPageInfo.pages!=0)?requestScope.studentPageInfo.pages:requestScope.studentPageInfo.pages+1 }</h1>
 <body>
-
 <div class="main-wrap">
     <div class="crumb-wrap">
-        <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><span
-                class="crumb-name">学生管理</span></div>
+        <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span class="crumb-step">&gt;</span>
+            <span    class="crumb-name">学生管理</span></div>
     </div>
     <div class="search-wrap">
         <div class="search-content">
@@ -49,13 +49,13 @@
             </form>
         </div>
     </div>
-    <b class="result-wrap">
+    <body class="result-wrap">
         <div class="result-title">
             <div class="result-list">
-                <a href="/Test01Project/backstage/admin_useradd.jsp">新增学生</a>
+                <a href="${pageContext.request.contextPath}/admin/admin_useradd.jsp?pageMaxNum=${(requestScope.studentPageInfo.total%requestScope.studentPageInfo.pages!=0)?requestScope.studentPageInfo.pages:requestScope.studentPageInfo.pages+1 }" style="margin-left: 15px">新增学生</a>
             </div>
         </div>
-        <div class="result-content">
+        <div class="result-content" style="margin-left: 15px">
             <table class="result-tab" width="100%">
                 <tr>
                     <th>编号</th>
@@ -81,24 +81,27 @@
                             <td>${student.password}</td>
                             <td>${student.studentClass}</td>
                             <td><a href="#">查看成绩</a>
-                            <td>
-                                <div style="display: inline">
-                                    <div><a href="#" s style="float: left"  class="btn btn-primary btn-xs " role="button">修改</a>
-                                    </div>
-                                    <div  ><a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}"  id="del" class="btn btn-danger btn-xs " role="button">删除</a></div>
+                            <td >
+                                <div>
+                                  <a href="#"  style="float: left ">修改</a>
                                 </div>
+                                <div>
+                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${empty requestScope.studentPageInfo.size?requestScope.studentPageInfo.pageNum-1:requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}" style="margin-left: 5px" class="thedelete"  >删除</a></div>
+
                         </td>
-                        </tr>
+
+        </tr>
                     </c:forEach>
                 </c:if>
-
 
             </table>
             <div style="position: absolute;left: 550px ;top: 575px ">
                 <div class="list-page">
                     <a href="/Survey/AdminServlet?action=ShowStudentPaging&pageNum=1&pageSize=7&studentClass=${empty requestScope.studentClass?'全部班级':requestScope.studentClass}">首页</a>
                     <a href="#" id="previousPage">上一页</a>
-                    <span id="currentPage">${empty requestScope.currentPage?1:requestScope.currentPage}</span>/${requestScope.studentPageInfo.pages}
+                    <span id="currentPage">
+                        ${empty requestScope.currentPage?1:requestScope.currentPage}
+                    </span>/${requestScope.studentPageInfo.pages}
                     页
                     <a href="#" id="nextPage">下一页</a>
                     <a href="/Survey/AdminServlet?action=ShowStudentPaging&pageNum=${requestScope.studentPageInfo.pages}&pageSize=7&studentClass=${empty requestScope.studentClass?'全部班级':requestScope.studentClass}">尾页</a>
@@ -109,7 +112,6 @@
                     <br>
                 </div>
             </div>
-
     <!--/main-->
 </div>
 <script type="text/javascript">
@@ -122,11 +124,11 @@
     var btn1 = document.querySelector("#btn1")
     var btn2 = document.querySelector("#btn2")
     var text2 = document.querySelector("#text2")
-    var del= document.querySelector("#del")
+
     //上一页
-    del.onclick=function (){
-        alert("123")
-    }
+    $(".thedelete").click(function (){
+        return confirm("确定要删除该学生吗?")
+    })
     previousPage.onclick = function () {
         if (Number(currentPage.innerHTML) > 1) {
             currentPage.innerHTML = Number(currentPage.innerHTML) - 1
@@ -167,5 +169,5 @@
     }
 
 </script>
-</body>
+    </body>
 </html>

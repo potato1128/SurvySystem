@@ -62,4 +62,6 @@ public interface UserService {
      * @return
      */
     int deleteStudent(Integer id);
+    int insertStudent(Student student);
+    int updateStudent(Student student);
 }

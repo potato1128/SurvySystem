@@ -16,4 +16,8 @@ public interface StudentMapper  {
     List<String>selectAllClass();
     //根据id删除学生
     int delete(Integer id);
+    //新增学生
+    int insertStu(Student student);
+    //修改学生
+    int updateStu(Student student);
 }

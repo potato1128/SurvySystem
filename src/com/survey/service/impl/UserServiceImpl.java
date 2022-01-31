@@ -110,10 +110,27 @@ public class UserServiceImpl implements UserService {
     public int deleteStudent(Integer id) {
        return studentMapper.delete(id);
     }
-@Test
+
+    @Override
+    public int insertStudent(Student student) {
+        if(null!=student){
+        return  studentMapper.insertStu(student);
+
+        }
+        return -1;
+    }
+
+    @Override
+    public int updateStudent(Student student) {
+        if(null!=student){
+            return  studentMapper.updateStu(student);
+        }
+        return -1;
+    }
+
+    @Test
     public  void ts(){
     UserServiceImpl userService = new UserServiceImpl();
-    int i = userService.deleteStudent(1);
-    System.out.println(i);
+    userService.updateStudent(new Student(3,"admin","admin","admin","admin",1));
 }
 }

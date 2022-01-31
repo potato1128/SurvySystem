@@ -21,6 +21,14 @@ public class Student {
         this.gender = gender;
     }
 
+    public Student(String studentId, String studentName, String studentClass, String password, Integer gender) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.studentClass = studentClass;
+        this.password = password;
+        this.gender = gender;
+    }
+
     public Integer getId() {
         return id;
     }
