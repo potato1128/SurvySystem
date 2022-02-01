@@ -33,8 +33,10 @@ public class AdminServlet extends BaseServlet{
         String pageSize0 = request.getParameter("pageSize");
         String studentClass = request.getParameter("studentClass");
         String studentId= request.getParameter("studentId");
-        if(studentId!=null){
+        if(studentId!=null&&studentId!=""){
             request.setAttribute("studentId",studentId);
+        }else {
+            studentId=null;
         }
         if(studentClass!=null){
             if(studentClass.equals("全部班级")||studentClass==""){
@@ -68,18 +70,20 @@ public class AdminServlet extends BaseServlet{
     }
     //删除学生
     public void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String pageNum0 = request.getParameter("pageNum");
+        int pageNum0 = TypeUtils.toInt(request.getParameter("pageNum"));
+        int size = TypeUtils.toInt(request.getParameter("size"));
         String pageSize0 = request.getParameter("pageSize");
         String studentClass = request.getParameter("studentClass");
         String id = request.getParameter("id");
         if(null!=id){
             int i = TypeUtils.toInt(id);
             userService.deleteStudent(i);
-            request.setAttribute("PageNum",pageNum0);
-            request.setAttribute("pageSize",pageSize0);
-            request.setAttribute("studentClass",studentClass);
+            if(size == 1){
+                pageNum0--;
+            }
+
         }
-       request.getRequestDispatcher("/AdminServlet?action=ShowStudentPaging").forward(request,response);
+       request.getRequestDispatcher("/AdminServlet?action=ShowStudentPaging&pageNum="+pageNum0+"&pageSize="+pageSize0+"&studentClass="+studentClass).forward(request,response);
     }
     //添加学生
     public void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {

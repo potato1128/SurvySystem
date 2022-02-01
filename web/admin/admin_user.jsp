@@ -15,7 +15,7 @@
     <link href="../js/framework/bootstrap-3.4.1-dist/js/bootstrap.js" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 </head>
-<h1>${(requestScope.studentPageInfo.total/requestScope.studentPageInfo.pages!=0)?requestScope.studentPageInfo.pages:requestScope.studentPageInfo.pages+1 }</h1>
+
 <body>
 <div class="main-wrap">
     <div class="crumb-wrap">
@@ -86,7 +86,7 @@
                                   <a href="#"  style="float: left ">修改</a>
                                 </div>
                                 <div>
-                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${empty requestScope.studentPageInfo.size?requestScope.studentPageInfo.pageNum-1:requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}" style="margin-left: 5px" class="thedelete"  >删除</a></div>
+                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${empty requestScope.studentPageInfo.size?requestScope.studentPageInfo.pageNum-1:requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}" style="margin-left: 5px" class="thedelete"  >删除</a></div>
 
                         </td>
 

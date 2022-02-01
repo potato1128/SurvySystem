@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./css/style.css">
     <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
     <script src="js/framework/jquery.js"></script>
