@@ -20,4 +20,7 @@ public interface StudentMapper  {
     int insertStu(Student student);
     //修改学生
     int updateStu(Student student);
+    //根据id查学生
+    Student selectStuById(Integer id);
+
 }

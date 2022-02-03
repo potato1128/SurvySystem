@@ -128,9 +128,15 @@ public class UserServiceImpl implements UserService {
         return -1;
     }
 
+    @Override
+    public Student selectStuById(Integer id) {
+        return studentMapper.selectStuById(id);
+    }
+
     @Test
     public  void ts(){
     UserServiceImpl userService = new UserServiceImpl();
-    userService.updateStudent(new Student(3,"admin","admin","admin","admin",1));
-}
+        Student student = userService.selectStuById(207);
+        System.out.println(student);
+    }
 }

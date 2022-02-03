@@ -81,7 +81,7 @@
                             <td><a href="#">查看成绩</a>
                             <td >
                                 <div>
-                                  <a href="#"  style="float: left ">修改</a>
+                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=updateStudent&studentId=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}"  style="float: left ">修改</a>
                                 </div>
                                 <div>
                                   <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}" style="margin-left: 5px" class="thedelete"  >删除</a>

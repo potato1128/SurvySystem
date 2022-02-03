@@ -62,6 +62,19 @@ public interface UserService {
      * @return
      */
     int deleteStudent(Integer id);
+
+    /**
+     * 添加学生
+     * @param student
+     * @return
+     */
     int insertStudent(Student student);
+
+    /**
+     * 修改学生信息
+     * @param student
+     * @return
+     */
     int updateStudent(Student student);
+    Student selectStuById(Integer id);
 }

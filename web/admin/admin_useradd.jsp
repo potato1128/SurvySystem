@@ -15,7 +15,7 @@
 
     <div class="main-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">用户管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
+            <div class="crumb-list"><a href="admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">学生管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
@@ -58,7 +58,7 @@
                         <tr>
                             <th></th>
                             <td>
-                                <input class="btn btn-primary btn6 mr10" value="提交" type="submit" id="sub">
+                                <input class="btn btn-primary btn6 mr10" value="添加" type="submit" id="sub">
                                 <input class="btn btn6" onClick="history.go(-1)" value="返回" type="button">
                             </td>
                         </tr>

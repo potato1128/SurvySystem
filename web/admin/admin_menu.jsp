@@ -1,14 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: paigubuxianglema
-  Date: 2021/9/30
-  Time: 10:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="/js/framework/jquery.js"></script>
     <meta charset="UTF-8"/>
     <title>后台管理</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/main.css"/>
@@ -28,7 +22,7 @@
             <ul class="top-info-list clearfix">
                 <li><a href="#">管理员</a></li>
                 <li><a href="#">修改密码</a></li>
-                <li><a href="${pageContext.request.contextPath}/UserServlet?action=logout">退出</a></li>
+                <li><a href="${pageContext.request.contextPath}/UserServlet?action=logout" id="logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -51,3 +45,9 @@
             </ul>
         </div>
     </div>
+    <script type="text/javascript">
+      var a=  document.querySelector("#logout")
+      a.onclick=function (){
+      return  window.confirm("您确定要退出吗?")
+      }
+    </script>

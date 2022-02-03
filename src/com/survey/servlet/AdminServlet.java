@@ -110,6 +110,41 @@ public class AdminServlet extends BaseServlet{
         userService.insertStudent(student);
       response.sendRedirect("/Survey/AdminServlet?action=ShowStudentPaging&pageNum="+num);
     }
+    //修改之前根据id查询学生信息,进行学生信息回显
+    public void updateStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String studentId = request.getParameter("studentId");
+        String pageNum = request.getParameter("pageNum");
+        int i=0;
+        if(studentId!=null&&studentId!=""){
+             i = TypeUtils.toInt(studentId);
+        }
+        Student student = userService.selectStuById(i);
+        request.setAttribute("student",student);
+        request.setAttribute("pageNum",pageNum);
+        request.getRequestDispatcher("/admin/admin_userupdate.jsp").forward(request,response);
+    }
+    //修改学生
+    public void updateStu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        int i=0;
+        int id=0;
+        String studentId = request.getParameter("studentId");
+        String stuId = request.getParameter("stuId");
+        String stuName = request.getParameter("stuName");
+        String stuPwd = request.getParameter("stuPwd");
+        String stuClass = request.getParameter("stuClass");
+        String sex = request.getParameter("sex");
+        String pageNum = request.getParameter("pageNum");
+        if(null!=sex){
+           i = TypeUtils.toInt(sex);
+        }
+        if(null!=stuClass){
+            id=TypeUtils.toInt(studentId);
+        }
+        Student student = new Student(id,stuId,stuName,stuClass,stuPwd,i);
+        userService.updateStudent(student);
+      response.sendRedirect("/Survey/AdminServlet?action=ShowStudentPaging&pageNum="+pageNum);
+
+    }
         //展示所有企业用户
     public void ShowUserPaging(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String pageNum0 = request.getParameter("pageNum");
