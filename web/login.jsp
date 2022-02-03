@@ -5,19 +5,15 @@
     <title>登录</title>
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./js/framework/bootstrap-3.4.1-dist/css/bootstrap.css" />
-    <!-- <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> -->
     <link href="./js/framework/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/css.css">
     <link rel="stylesheet" href="./css/upload.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link
-            rel="stylesheet"
-    />
+    <link rel="stylesheet"/>
 
     <script src="js/framework/jquery.js"></script>
     <script src="js/framework/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
     <script src="./js/myjs.js"></script>
-    <!-- <script src="http://cdn.bootcss.com/masonry/4.1.1/masonry.pkgd.min.js"></script> -->
     <script src="./js/framework/layer-3.5.1/layer.js"></script>
 </head>
 <body>
@@ -33,17 +29,8 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#"  id="title">清洁生产信息化公共服务练习平台</a> </li>--%>
-<%--                <li><a href="index.html"> 首页</a> </li>--%>
-<%--                <li><a href="./main.html"> 课程大纲</a></li>--%>
-<%--                <li><a href="./bao.html"> 优惠信息</a></li>--%>
-            </ul>
-<%--            <form action="#" class="navbar-form navbar-left">--%>
-<%--                <input type="text" placeholder="搜索感兴趣的课程" class="form-control">--%>
-<%--                <button type="submit">--%>
-<%--                    <span class="glyphicon glyphicon-search"></span>--%>
-<%--                </button>--%>
-<%--            </form>--%>
 
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="regist.jsp"><span class="glyphicon glyphicon-user"></span>注册</a></li>
                 <li><a href="./login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -167,8 +154,6 @@
     </div>
     <!-- 底部 -->
 </div>
-<%--<div style="border: 1px black; width: 1536px;height: 52px;background-color: black; position: absolute; top: 675px;"></div>--%>
-
 </footer>
 </body>
 </html>

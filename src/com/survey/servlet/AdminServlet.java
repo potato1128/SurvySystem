@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 @WebServlet("/AdminServlet")
 public class AdminServlet extends BaseServlet{
@@ -45,7 +46,11 @@ public class AdminServlet extends BaseServlet{
                 request.setAttribute("studentClass",studentClass);
             }
         }
-        List<String> strings = userService.ListAllClass();
+        List<String> strings=new ArrayList<String>() {
+        };
+        if(  userService.ListAllClass().size()!=0){
+            strings=userService.ListAllClass();
+        }
         request.getSession().setAttribute("classRoom",strings);
         request.setAttribute("currentPage",pageNum0);
         int pageNum = 0;

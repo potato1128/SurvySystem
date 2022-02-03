@@ -12,7 +12,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 </head>
 <body>
-    <!--/sidebar-->
+
     <div class="main-wrap">
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">用户管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
@@ -44,7 +44,7 @@
                         <tr>
                             <th><i class="require-red">*</i>班级：</th>
                             <td>
-                                <input class="common-text required" id="admin_rePwd" name="stuClass" size="50" value="" type="text">
+                                <input class="common-text required" id="admin_class" name="stuClass" size="50" value="" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -73,8 +73,22 @@
 </body>
 <script type="text/javascript">
 $("#sub").click(function (){
-alert($("#uid").val())
-
+    if($("#uid").val()==""){
+        alert("学号不能为空！")
+        return false;
+    }
+    if($("#admin_name").val()==""){
+        alert("学生姓名不能为空！")
+        return false;
+    }
+    if($("#admin_pwd").val()==""){
+        alert("登录密码不能为空！")
+        return false;
+    }
+    if($("#admin_class").val()==""){
+        alert("班级信息不能为空！")
+        return false;
+    }
 
 })
 </script>

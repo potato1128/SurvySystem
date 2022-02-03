@@ -8,19 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="admin_menu.jsp" %>
-<html>
-<head>
+
+
     <link href="../js/framework/bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../js/framework/bootstrap-3.4.1-dist/css/bootstrap-theme.css" rel="stylesheet">
     <link href="../js/framework/bootstrap-3.4.1-dist/js/bootstrap.js" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-</head>
 
-<body>
 <div class="main-wrap">
     <div class="crumb-wrap">
         <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span class="crumb-step">&gt;</span>
-            <span    class="crumb-name">学生管理</span></div>
+            <span class="crumb-name">学生管理</span></div>
     </div>
     <div class="search-wrap">
         <div class="search-content">
@@ -49,10 +47,10 @@
             </form>
         </div>
     </div>
-    <body class="result-wrap">
+    <div class="result-wrap">
         <div class="result-title">
             <div class="result-list">
-                <a href="${pageContext.request.contextPath}/admin/admin_useradd.jsp?pageMaxNum=${(requestScope.studentPageInfo.total%requestScope.studentPageInfo.pages!=0)?requestScope.studentPageInfo.pages:requestScope.studentPageInfo.pages+1 }" style="margin-left: 15px">新增学生</a>
+                <a href="${pageContext.request.contextPath}/admin/admin_useradd.jsp?pageMaxNum=${(requestScope.studentPageInfo.total%requestScope.studentPageInfo.pageSize!=0)?requestScope.studentPageInfo.pages:requestScope.studentPageInfo.pages+1 }"  style="margin-left: 15px">新增学生</a>
             </div>
         </div>
         <div class="result-content" style="margin-left: 15px">
@@ -86,11 +84,12 @@
                                   <a href="#"  style="float: left ">修改</a>
                                 </div>
                                 <div>
-                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${empty requestScope.studentPageInfo.size?requestScope.studentPageInfo.pageNum-1:requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}" style="margin-left: 5px" class="thedelete"  >删除</a></div>
+                                  <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}" style="margin-left: 5px" class="thedelete"  >删除</a>
+                                </div>
 
                         </td>
 
-        </tr>
+                         </tr>
                     </c:forEach>
                 </c:if>
 
@@ -114,6 +113,7 @@
             </div>
     <!--/main-->
 </div>
+    </div>
 <script type="text/javascript">
 
     var nextPage = document.querySelector("#nextPage")
@@ -170,4 +170,4 @@
 
 </script>
     </body>
-</html>
+    </html>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SurveySystem:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/SurveySystem_war</output-path>
+    <root id="archive" name="SurveySystem_war.war">
+      <element id="artifact" artifact-name="SurveySystem:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/servlet-api.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

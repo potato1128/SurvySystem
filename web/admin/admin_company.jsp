@@ -7,14 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="admin_menu.jsp"%>
+<%@ include file="admin_menu.jsp" %>
 <link href="../js/framework/bootstrap-3.4.1-dist/css/bootstrap.css">
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 
 <!--/sidebar-->
 <div class="main-wrap">
     <div class="crumb-wrap">
-        <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">企业管理</span></div>
+        <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span
+                class="crumb-step">&gt;</span><span class="crumb-name">企业管理</span></div>
     </div>
     <div class="search-wrap">
         <div class="search-content">
@@ -22,9 +23,10 @@
                 <table class="search-tab">
                     <tr>
 
-                        </td>
+
                         <th width="70">关键字:</th>
-                        <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                        <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text">
+                        </td>
                         <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                     </tr>
                 </table>
@@ -38,24 +40,26 @@
                     <a href="/Test01Project/backstage/admin_useradd.jsp">新增用户</a>
                 </div>
             </div>
-            <div class="result-content">
+            <div class="result-content" style="margin-left: 15px">
                 <table class="result-tab" width="100%">
                     <th>序号</th>
                     <th>公司名</th>
                     <th>用户名</th>
                     <th>密码</th>
                     <th>操作</th>
-                    <c:forEach  items="${requestScope.userPageInfo.list}" var="user">
+                    <c:forEach items="${requestScope.userPageInfo.list}" var="user">
                         <tr>
-                           <td>${user.id}</td>
+                            <td>${user.id}</td>
                             <td>${user.firmName}</td>
                             <td>${user.username}</td>
                             <td>${user.password}</td>
                             <td>
-                                <div style="display: inline">
-                                    <div><a th:href="#" s style="float: left" class="btn btn-primary btn-xs " role="button">修改</a>
-                                    </div>
-                                    <div><a th:href="#" class="btn btn-danger btn-xs " role="button">删除</a></div>
+                                <div>
+                                    <a href="#" style="float: left ">修改</a>
+                                </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}"
+                                       style="margin-left: 5px" class="thedelete">删除</a>
                                 </div>
                             </td>
 
@@ -83,6 +87,7 @@
 </div>
 <!--/main-->
 </div>
+
 <script type="text/javascript">
 
     var nextPage = document.querySelector("#nextPage")
@@ -100,13 +105,13 @@
     }
     //下一页
     nextPage.onclick = function () {
-            if(Number(currentPage.innerHTML)<${requestScope.userPageInfo.pages}) {
-                currentPage.innerHTML = Number(currentPage.innerHTML) + 1
-                location.href = "/Survey/AdminServlet?action=ShowUserPaging&pageNum=" + currentPage.innerHTML + "&pageSize=7"
-            }
-            else {
-                currentPage.innerHTML=${requestScope.userPageInfo.pages}
-            }
+        if (Number(currentPage.innerHTML) <${requestScope.userPageInfo.pages}) {
+            currentPage.innerHTML = Number(currentPage.innerHTML) + 1
+            location.href = "/Survey/AdminServlet?action=ShowUserPaging&pageNum=" + currentPage.innerHTML + "&pageSize=7"
+        } else {
+            currentPage.innerHTML =
+            ${requestScope.userPageInfo.pages}
+        }
 
     }
     //选择页数
