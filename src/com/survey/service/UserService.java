@@ -77,4 +77,31 @@ public interface UserService {
      */
     int updateStudent(Student student);
     Student selectStuById(Integer id);
+
+    /**
+     * 添加企业用户
+     * @param user
+     * @return
+     */
+    int insertUser(User user);
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    int updateUser(User user);
+
+    /**
+     * 根据id删除用户
+     * @param id
+     * @return
+     */
+    int deleteUser(Integer id);
+
+    /**
+     * 根据id查企业用户
+     * @param id
+     * @return
+     */
+    User selectUserById(Integer id);
 }

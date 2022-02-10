@@ -133,10 +133,64 @@ public class UserServiceImpl implements UserService {
         return studentMapper.selectStuById(id);
     }
 
+    /**
+     * 添加企业用户
+     *
+     * @param user
+     * @return -1为失败
+     */
+    @Override
+    public int insertUser(User user) {
+        if(user!=null){
+          return   userMapper.insertUser(user);
+        }
+        return  -1;
+    }
+
+    /**
+     * 修改用户
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public int updateUser(User user) {
+        if(user!=null){
+            return  userMapper.updateUser(user);
+        }
+       return -1;
+    }
+
+    /**
+     * 根据id删除用户
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public int deleteUser(Integer id) {
+       if(id!=null){
+          return userMapper.deleteUser(id);
+       }
+       return -1;
+    }
+
+    /**
+     * 根据id查企业用户
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public User selectUserById(Integer id) {
+            if(id!=null){
+                return userMapper.selectUserById(id);
+            }
+            return null;
+    }
     @Test
     public  void ts(){
     UserServiceImpl userService = new UserServiceImpl();
-        Student student = userService.selectStuById(207);
-        System.out.println(student);
+        System.out.println(userService.selectUserById(2));
     }
 }

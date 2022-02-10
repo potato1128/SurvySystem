@@ -163,9 +163,58 @@ public class AdminServlet extends BaseServlet{
         request.setAttribute("userPageInfo",userPageInfo);
         request.getRequestDispatcher("/admin/admin_company.jsp").forward(request,response);
     }
+    //删除企业用户
+    public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String id = request.getParameter("id");
+        String pageNum = request.getParameter("pageNum");
+        int i=1;
+        if(id!=null&&id!=""){
+            i = TypeUtils.toInt(id);
+        }
+        userService.deleteUser(i);
+        response.sendRedirect("/Survey/AdminServlet?action=ShowUserPaging&pageNum="+pageNum);
+    }
+    //添加企业用户
+    public void addUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String pageNum = request.getParameter("pageNum");
+        String firmName = request.getParameter("firmName");
+        String username = request.getParameter("username");
+        String userPwd = request.getParameter("userPwd");
+        User user = new User(firmName,username,userPwd);
+        userService.insertUser(user);
+        response.sendRedirect("/Survey/AdminServlet?action=ShowUserPaging&pageNum="+pageNum);
+    }
+    //修改之前根据id查询企业用户信息,进行回显
+    public void firstQueryUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String pageNum = request.getParameter("pageNum");
+        String id = request.getParameter("id");
+        int i=1;
+        if(id!=null&&id!=""){
+            i = TypeUtils.toInt(id);
+        }
+        User user = userService.selectUserById(i);
+        request.setAttribute("user",user);
+        request.setAttribute("pageNum",pageNum);
+        request.getRequestDispatcher("/admin/admin_companyupdate.jsp").forward(request,response);
+    }
+    public void updateUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String pageNum = request.getParameter("pageNum");
+        String id = request.getParameter("id");
+        String firmName = request.getParameter("firmName");
+        String username = request.getParameter("username");
+        String userPwd = request.getParameter("userPwd");
+        int i=1;
+        if(id!=null&&id!=""){
+            i = TypeUtils.toInt(id);
+        }
+        User user = new User(i, firmName, username, userPwd);
+        userService.updateUser(user);
+        response.sendRedirect("/Survey/AdminServlet?action=ShowUserPaging&pageNum="+pageNum);
+
+    }
 
 
-    @Override
+        @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doPost(req, resp);
     }

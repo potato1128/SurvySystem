@@ -10,7 +10,6 @@
 <%@ include file="admin_menu.jsp" %>
 <link href="../js/framework/bootstrap-3.4.1-dist/css/bootstrap.css">
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-
 <!--/sidebar-->
 <div class="main-wrap">
     <div class="crumb-wrap">
@@ -21,14 +20,6 @@
         <div class="search-content">
             <form action="#" method="post">
                 <table class="search-tab">
-                    <tr>
-
-
-                        <th width="70">关键字:</th>
-                        <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text">
-                        </td>
-                        <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
-                    </tr>
                 </table>
             </form>
         </div>
@@ -37,7 +28,7 @@
         <form name="myform" id="myform" method="post">
             <div class="result-title">
                 <div class="result-list">
-                    <a href="/Test01Project/backstage/admin_useradd.jsp">新增用户</a>
+                    <a href="/Survey/admin/admin_companyadd.jsp?lastPageNum=${requestScope.userPageInfo.pages}">新增企业用户</a>
                 </div>
             </div>
             <div class="result-content" style="margin-left: 15px">
@@ -55,11 +46,10 @@
                             <td>${user.password}</td>
                             <td>
                                 <div>
-                                    <a href="#" style="float: left ">修改</a>
+                                    <a href="${pageContext.request.contextPath}/AdminServlet?action=firstQueryUser&id=${user.id}&pageNum=${requestScope.userPageInfo.pageNum}" style="float: left ">修改</a>
                                 </div>
                                 <div>
-                                    <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteStudent&id=${student.id}&pageNum=${requestScope.studentPageInfo.pageNum}&pageSize=${requestScope.studentPageInfo.pageSize}&studentClass=${requestScope.studentClass}&size=${requestScope.studentPageInfo.size}"
-                                       style="margin-left: 5px" class="thedelete">删除</a>
+                                    <a href="${pageContext.request.contextPath}/AdminServlet?action=deleteUser&id=${user.id}&pageNum=${requestScope.userPageInfo.pageNum}" style="margin-left: 5px" class="thedelete">删除</a>
                                 </div>
                             </td>
 

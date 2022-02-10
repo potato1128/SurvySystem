@@ -13,11 +13,20 @@ public class User {
     public User() {
     }
 
+    public User(String firmName, String username, String password) {
+        this.firmName = firmName;
+        this.username = username;
+        this.password = password;
+    }
+
     public User(Integer id, String firmName, String username, String password) {
         this.id = id;
         this.firmName = firmName;
         this.username = username;
         this.password = password;
+    }
+
+    public User(String id, String firmName, String username, String userPwd) {
     }
 
     public Integer getId() {

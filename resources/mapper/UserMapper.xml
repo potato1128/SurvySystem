@@ -12,4 +12,13 @@
     <select id="selectAllUser" resultType="com.survey.entity.User">
         select * from user
     </select>
+    <delete id="deleteUser">
+        delete  from user where id=#{id}
+    </delete>
+    <update id="updateUser">
+        update user set firm_name=#{firmName},username=#{username},password=#{password} where id=#{id}
+    </update>
+    <insert id="insertUser">
+        insert into user (firm_name, username, password) VALUES (#{firmName},#{username},#{password})
+    </insert>
 </mapper>

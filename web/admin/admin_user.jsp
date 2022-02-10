@@ -14,7 +14,6 @@
     <link href="../js/framework/bootstrap-3.4.1-dist/css/bootstrap-theme.css" rel="stylesheet">
     <link href="../js/framework/bootstrap-3.4.1-dist/js/bootstrap.js" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-
 <div class="main-wrap">
     <div class="crumb-wrap">
         <div class="crumb-list"><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a><span class="crumb-step">&gt;</span>
